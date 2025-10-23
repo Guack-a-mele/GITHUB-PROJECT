@@ -1,12 +1,12 @@
 import pickle
 def showData():
-stu={}
+    stu={}
 fp=open("stu.dat","rb")
 print("Roll\tName\tCity")
 flag=False
 try:
-while True:
-stu=pickle.load(fp)
+    while True:
+        stu=pickle.load(fp)
 #print(emp1)
 print(stu['roll'],'\t',stu['name'],'\t',stu['city'])
 except EOFError:
