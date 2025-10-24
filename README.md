@@ -1,1 +1,1 @@
-Simple Library Mangement System using python
+Simple Delivery sytem using python and MySQL
