@@ -1,0 +1,12 @@
++-----+------------------------------------+--------------+---------+--------------+
+| SNo | Item Name                          | Veg/NonVeg   | Price   | Availability |
+| --- | ---------------------------------- | ------------ | ------- | ------------ |
+| 1   | Surprise Burger                    | Veg/ Non veg | 75      | Available    |
+| 2   | Pizza McPuff                       | Veg          | 68      | Available    |
+| 3   | McFlurry Oreo (S/M)                | Veg          | 104/129 | Available    |
+| 4   | McFlurry Chocolate Overload (S/M)  | Veg          | 134/165 | Available    |
+| 5   | McFlurry Black Forest (M)          | Veg          | 136     | Available    |
+| 6   | McAloo Tikki (Single/double patty) | Veg          | 74/93   | Available    |
+| 7   | Crispy Veggie burger               | Veg          | 198     | Available    |
+| 8   | McCrispy Chicken burger            | Non veg      | 222     | Available    |
++-----+------------------------------------+--------------+---------+--------------+
