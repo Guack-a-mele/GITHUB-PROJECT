@@ -5,7 +5,7 @@ print(menu_print.read())
 menu_print.close()
 cart_file=open("Cart.txt","w")
 print("1. To view individual item in detail enter their SNo")
-print ("2. o add to cart enter add S/M/R (if the option exists)")
+print("2. To add to cart directly enter add <Item_name> S/M/R (if the option exists)")
 print("3. To view cart enter view cart")
 while True: 
     print("======================")
@@ -113,7 +113,11 @@ while True:
             print("McCrispy Chicken burger added !")
         elif b in ("no","n"):
             print("sad --(*)_(*)--")
-        else:
-            print("Skipping...")
+    elif a=="Suprise Burger":
+        cart_file.write("Suprise Burger")
+        print("Suprise Burger added !")
+    elif a=="Pizza McPuff":
+        cart_file.write("Pizza McPuff")
+        print("Pizza McPuff added !")
     else:
         print("Please choose something from the given menu")
