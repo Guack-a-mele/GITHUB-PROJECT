@@ -1,0 +1,3 @@
+print("Name", file.write(f"Date: {now.strftime('%d-%m-%Y %H:%M:%S')}\n")
+Name: Yahya
+Adress: 12321
