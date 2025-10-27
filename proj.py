@@ -1,4 +1,16 @@
+from datetime import datetime
 
+now = datetime.now()
+name="Yahya"
+address= "116,RK Puram"
+phone="12xxxx3"
+items_ordered=items_ordered = [
+    ["apple", 2, 40],
+    ["banana", 5, 100],
+    ["cherry", 1, 60]
+]
+total_amount=123
+'''
 def take_order():
     items_ordered = []
     total_amount = 0
@@ -27,26 +39,28 @@ def take_order():
 def save_invoice(name, phone, address, items_ordered, total_amount):
     now = datetime.datetime.now()
     filename = f"invoice_{name}_{now.strftime('%Y%m%d_%H%M%S')}.txt"
+'''
+with open("filename.txt", "r+") as file:
+    file.write("======= McDonald's Delivery Invoice =======\n")
+    file.write(f"Date: {now.strftime('%d-%m-%Y %H:%M:%S')}\n")
+    file.write(f"Customer Name: {name}\n")
+    file.write(f"Phone: {phone}\n")
+    file.write(f"Address: {address}\n")
+    file.write("-------------------------------------------\n")
+    file.write("Items Ordered:\n")
 
-    with open(filename, "w") as file:
-        file.write("======= McDonald's Delivery Invoice =======\n")
-        file.write(f"Date: {now.strftime('%d-%m-%Y %H:%M:%S')}\n")
-        file.write(f"Customer Name: {name}\n")
-        file.write(f"Phone: {phone}\n")
-        file.write(f"Address: {address}\n")
-        file.write("-------------------------------------------\n")
-        file.write("Items Ordered:\n")
+    for item_name, qty, amount in items_ordered:
+        file.write(f"{item_name} x{qty} = ₹{amount}\n")
 
-        for item_name, qty, amount in items_ordered:
-            file.write(f"{item_name} x{qty} = ₹{amount}\n")
-
-        file.write("-------------------------------------------\n")
-        file.write(f"Total Bill: ₹{total_amount}\n")
-        file.write("Thank you for ordering from McDonald's!\n")
-        file.write("Your food will be delivered shortly 🍟🍔\n")
-
-    print(f"\nInvoice generated and saved as '{filename}'")
-    print("Thank you! Your order will be delivered soon 🚴‍♂️")
+    file.write("-------------------------------------------\n")
+    file.write(f"Total Bill: ₹{total_amount}\n")
+    file.write("Thank you for ordering from McDonald's!\n")
+    file.write("Your food will be delivered shortly 🍟🍔\n")
+    file.seek(0)
+    print(file.read())
+print(f"\nInvoice generated and saved as '{"filename.txt"}'")
+print("Thank you! Your order will be delivered soon 🚴‍♂️")
+'''
 def main():
     name, phone, address = get_customer_details()
     items_ordered, total_amount = take_order()
@@ -55,3 +69,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+'''
