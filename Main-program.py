@@ -1,23 +1,38 @@
 # McDaddy delivery system
-menu_print= open("Menu.txt","r")
-print("==========================================[[MENU]]===========================================")
-print(menu_print.read())
-menu_print.close()
+items_ordered= []
+menu_items = {}
+
+with open("impmenu.txt", "r") as file:
+    for i, line in enumerate(file, start=1): # learn this (NKS)
+        if "-" in line:
+            name, price = line.strip().split(" - ")
+            menu_items[str(i)] = (name, int(price))
+
+print("==========================================[[WELCOME]]===========================================")
 cart_file=open("Cart.txt","w")
-print("1. To view individual item in detail enter their SNo")
-print("2. To add to cart directly enter add <Item_name> S/M/R (if the option exists)")
+print("1. To view Menu enter \"Menu\" or \"m\"")
+print("2. To add to cart enter the item's Sno")
 print("3. To view cart enter view cart")
+print("4. EXIT --> EE")
 while True: 
     print("======================")
     a=input("Waiting for input --> ").strip()
     print("======================")
-    if a=="1":
+    if a in ("Menu", "m"):
+        with open("Menu.txt","r") as menu:
+            print(menu.read())
+    elif a=="1":
         print("Name: Suprise Burger\nPrice: 75\nAvailability: Available")
         print("Would you like to add it to cart")
         b=input("--> ")
         if b in ("yes", "y"):
-            cart_file.write("Suprise Burger")
-            print("Suprise Burger added !")
+            try:
+                qty = int(input("Enter quantity --> "))
+                total = price * qty
+                items_ordered.append((item, qty, total))
+                print("Suprise Burger added !", "x", qty, "=", total)
+            except ValueError:
+                print("Invalid input")
         elif b in ("no","n"):
             print("sad --(*)_(*)--")
         else:
@@ -119,5 +134,7 @@ while True:
     elif a=="Pizza McPuff":
         cart_file.write("Pizza McPuff")
         print("Pizza McPuff added !")
+    elif a=="EE":
+        break
     else:
-        print("Please choose something from the given menu")
+        print("Please choose something from the given options")

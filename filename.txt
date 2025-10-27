@@ -1,0 +1,12 @@
+======= McDonald's Delivery Invoice =======
+Date: 28-10-2025 00:29:33
+Customer Name: 1
+Phone: 1
+Address: 1
+-------------------------------------------
+Items Ordered:
+Suprise Burger x12 = ₹900
+-------------------------------------------
+Total Bill: ₹900
+Thank you for ordering from McDonald's!
+Your food will be delivered shortly 🍟🍔

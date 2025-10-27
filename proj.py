@@ -4,7 +4,7 @@ now = datetime.now()
 name="Yahya"
 address= "116,RK Puram"
 phone="12xxxx3"
-items_ordered=items_ordered = [
+items_ordered= [
     ["apple", 2, 40],
     ["banana", 5, 100],
     ["cherry", 1, 60]
