@@ -1,0 +1,136 @@
+'''DONE ON 1/11/25 : 1:51 am'''
+
+
+'''
+1) FIXED CARTS   
+2)FIXED THE RANDOM-ASS ISSUE WHILE USING THE INVOICE   <https://coderivers.org/blog/python-unicodeencodeerror/>
+3)FIXED THE CALCULATIONS(222222) 
+
+'''
+
+
+
+
+
+from datetime import datetime
+now = datetime.now()
+items_ordered = []
+menu_items = {}
+total = 0
+
+with open("impmenu.txt", "r", encoding="utf-8") as file:
+    for i, line in enumerate(file, start=1):
+        if "-" in line:
+            name, price = line.strip().split(" - ")
+            menu_items[str(i)] = (name, int(price))
+
+cart_file = open("cart.txt", "w", encoding="utf-8")
+
+print("==========================================[[WELCOME]]===========================================")
+print("1. To view Menu enter \"Menu\" or \"m\"")
+print("2. To add to cart enter the item's S.no")
+print("3. To view cart enter \"view cart\"")
+print("4. Invoice I or i")
+
+while True:
+    print("======================")
+    a = input("Waiting for input --> ").strip()
+    print("======================")
+
+    if a in ("Menu", "m"):
+        with open("Menu.txt", "r", encoding="utf-8") as menu:
+                print(menu.read())
+                
+    elif a=="3":
+        print("Name: McFlurry Oreo (S/M)\nPrice:104/129\nAvailability: Available")
+        print("Would you like to add it to cart")
+        b=input("--> ")
+        if b in ("yes", "y"):
+            print("Small or Medium")
+            c=input("S/M--> ")
+            if c in ("Small", "S","s"):
+                print("Small McFlurry Oreo added !")
+                cart_file.write("McFlurry Oreo (S)")
+            elif c in ("Medium", "M", "m"):
+                print ("Medium McFlurry Oreo added !")
+                cart_file.write("McFlurry Oreo (M)")
+        elif b in ("no","n"):
+            print("sad --(*)_(*)--")
+        else:
+            print("Skipping...")
+                
+    elif a=="4":
+        print("Name: McFlurry Chocolate Overload (S/M)\nPrice: 134/165\nAvailability: Available")
+        print("Would you like to add it to cart")
+        b=input("--> ")
+        if b in ("yes", "y"):
+            print("Small or Medium")
+            c=input("S/M--> ")
+            if c in ("Small", "S","s"):
+                print("Small McFlurry Chocolate Overload added !")
+                cart_file.write("McFlurry Chocolate Overload (S)")
+            elif c in ("Medium", "M", "m"):
+                print ("Medium McFlurry Chocolate Overload added !")
+                cart_file.write("McFlurry Chocolate Overload (M)")
+        elif b in ("no","n"):
+            print("sad --(*)_(*)--")
+        else:
+            print("Skipping...")
+
+    elif a in menu_items:
+        item, price = menu_items[a]
+        print(f"Name: {item}\nPrice: ₹{price}\nAvailability: Available")
+        print("Would you like to add it to cart?")
+        b = input("--> ").strip().lower()
+        if b in ("yes", "y"):
+            try:
+                qty = int(input("Enter quantity --> "))
+                amount = price * qty
+                total += amount
+                items_ordered.append((item, qty, amount))
+                cart_file.write(f"{item} x{qty} = ₹{amount}\n")
+                print(f"{item} added! ₹{price} x {qty} = ₹{amount}")
+            except ValueError:
+                print("That ain't a number !?!?!?")
+        elif b in ("no", "n"):
+            print("sad --(*)_(*)--")
+        else:
+            print("Skipping...")
+
+    elif a.lower() == "view cart":
+        print("========== CART ==========")
+        for item_name, qty, amount in items_ordered:
+            print(f"{item_name} x{qty} = ₹{amount}")
+        print(f"Total so far: ₹{total}")
+        print("==========================")
+
+    elif a in ("Invoice", "I", "i"):
+        print("Enter details for Invoice")
+        name = input("Name: ")
+        while True:
+            try:
+                phone = int(input("Phone number: "))
+                break
+            except ValueError:
+                print("Enter the number damnit")
+        address = input("Address: ")
+
+        with open("filename.txt", "w+", encoding="utf-8") as file:
+            file.write("======= McDonald's Delivery Invoice =======\n")
+            file.write(f"Date: {now.strftime('%d-%m-%Y %H:%M:%S')}\n")
+            file.write(f"Customer Name: {name}\n")
+            file.write(f"Phone: {phone}\n")
+            file.write(f"Address: {address}\n")
+            file.write("-------------------------------------------\n")
+            file.write("Items Ordered:\n")
+            for item_name, qty, amount in items_ordered:
+                file.write(f"{item_name} x{qty} = ₹{amount}\n")
+            file.write("-------------------------------------------\n")
+            file.write(f"Total Bill: ₹{total}\n")
+            file.write("Thank you for ordering from McDonald's!\n")
+            file.write("Your food will be delivered shortly 🍟🍔\n")
+            file.seek(0)
+            print(file.read())
+
+    else:
+        print("Please choose something from the given options")
