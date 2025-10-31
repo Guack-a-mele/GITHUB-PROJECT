@@ -34,7 +34,7 @@ while True:
                 qty = int(input("Enter quantity --> "))
                 total = total + (price * qty)
                 items_ordered.append((item, qty, total))
-                print("Suprise Burger added !", "x", qty, "=", total)
+                print("Suprise Burger added !",price, "x", qty, "=", total)
             except ValueError:
                 print("That ain't a number !?!?!?")
         elif b in ("no","n"):
