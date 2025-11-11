@@ -41,51 +41,6 @@ while True:
             print("sad --(*)_(*)--")
         else:
             print("Skipping...")
-    elif a=="2":
-        print("Name: Pizza McPuff\nPrice: 68\nAvailability: Available")
-        print("Would you like to add it to cart")
-        b=input("--> ")
-        if b in ("yes", "y"):
-            cart_file.write("Pizza McPuff")
-            print("Pizza McPuff added !")
-        elif b in ("no","n"):
-            print("sad --(*)_(*)--")
-        else:
-            print("Skipping...")    
-    elif a=="3":
-        print("Name: McFlurry Oreo (S/M)\nPrice:104/129\nAvailability: Available")
-        print("Would you like to add it to cart")
-        b=input("--> ")
-        if b in ("yes", "y"):
-            print("Small or Medium")
-            c=input("S/M--> ")
-            if c in ("Small", "S","s"):
-                print("Small McFlurry Oreo added !")
-                cart_file.write("McFlurry Oreo (S)")
-            elif c in ("Medium", "M", "m"):
-                print ("Medium McFlurry Oreo added !")
-                cart_file.write("McFlurry Oreo (M)")
-        elif b in ("no","n"):
-            print("sad --(*)_(*)--")
-        else:
-            print("Skipping...")
-    elif a=="4":
-        print("Name: McFlurry Chocolate Overload (S/M)\nPrice: 134/165\nAvailability: Available")
-        print("Would you like to add it to cart")
-        b=input("--> ")
-        if b in ("yes", "y"):
-            print("Small or Medium")
-            c=input("S/M--> ")
-            if c in ("Small", "S","s"):
-                print("Small McFlurry Chocolate Overload added !")
-                cart_file.write("McFlurry Chocolate Overload (S)")
-            elif c in ("Medium", "M", "m"):
-                print ("Medium McFlurry Chocolate Overload added !")
-                cart_file.write("McFlurry Chocolate Overload (M)")
-        elif b in ("no","n"):
-            print("sad --(*)_(*)--")
-        else:
-            print("Skipping...")
     elif a in ("Invoice", "I","i"):
         print("Enter detetails for Invoice")
         name=input("Name ")
