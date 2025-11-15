@@ -30,19 +30,21 @@ while True:
         print("Would you like to add it to cart")
         b=input("--> ")
         if b in ("yes", "y"):
-            try:
-                qty = int(input("Enter quantity --> "))
-                total = total + (price * qty)
-                items_ordered.append((item, qty, total))
-                print("Suprise Burger added !",price, "x", qty, "=", total)
-            except ValueError:
-                print("That ain't a number !?!?!?")
+            while True:
+                try:
+                    qty = int(input("Enter quantity --> "))
+                    total = total + (price * qty)
+                    items_ordered.append((item, qty, total))
+                    print("Suprise Burger added !",price, "x", qty, "=", total)
+                    break
+                except ValueError:
+                     print("That ain't a number !?!?!?")
         elif b in ("no","n"):
             print("sad --(*)_(*)--")
         else:
             print("Skipping...")
     elif a in ("Invoice", "I","i"):
-        print("Enter detetails for Invoice")
+        print("Enter details for Invoice")
         name=input("Name ")
         while True:
             try:
@@ -61,7 +63,7 @@ while True:
             file.write("Items Ordered:\n")
 
             for item_name, qty, amount in items_ordered:
-                file.write(f"{item_name} x{qty} = ₹{amount}\n")
+                file.write(f"{item_name} x{qty} = {amount}\n")
 
             file.write("-------------------------------------------\n")
             file.write(f"Total Bill: ₹{total}\n")
