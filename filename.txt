@@ -1,12 +1,15 @@
 ======= McDonald's Delivery Invoice =======
-Date: 28-10-2025 00:29:33
-Customer Name: 1
-Phone: 1
-Address: 1
+Date: 16-11-2025 00:29:58
+Customer Name: nks
+Phone: 12432
+Address: gf
 -------------------------------------------
 Items Ordered:
-Suprise Burger x12 = ₹900
+McAloo Tikki x12 = 888
+Suprise Burger x2 = 1038
+McAloo Tikki x3 = 1260
+Crispy Veggie burger x5 = 2250
 -------------------------------------------
-Total Bill: ₹900
+Total Bill: ₹2250
 Thank you for ordering from McDonald's!
 Your food will be delivered shortly 🍟🍔

@@ -34,7 +34,7 @@ while True:
          print(tavnit%row)
      print(seperator)
   elif a in cou:
-     cursor_.execute("select ItemName,ItemPrice,Check from Menu where SNo="a")
+     cursor_.execute("select ItemName,ItemPrice,Checknull from Menu where SNo="a")
      Ret=cursor_.fetchone())
      if Ret[1]=="not null":
         print("Name:",Ret[0],"Price:"Ret[1],"Availability: Available")

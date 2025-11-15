@@ -4,7 +4,7 @@
 | 1   | Surprise Burger                   | Veg/ Non veg | 75               | Available    |
 | 2   | Pizza McPuff                      | Veg          | 68               | Available    |
 | 3   | McFlurry Oreo (S/M)               | Veg          | 104/129          | Available    |
-| 4   | McFlurry Chocolate Overload (S/M) | Veg          | 134/165          | Available    |
+| 4   | McFlurry Chocolate Overload (S/M) | Veg          | 132/157          | Available    |
 | 5   | McFlurry Black Forest (M)         | Veg          | 136              | Available    |
 | 6   | McAloo Tikki                      | Veg          | 74               | Available    |
 | 7   | Crispy Veggie burger              | Veg          | 198              | Available    |

@@ -22,7 +22,7 @@ while True:
     if a in ("Menu", "m"):
         with open("Menu.txt","r") as menu:
             print(menu.read())
-    elif a in ("1","6","7","8"):
+    elif a in ("1","5","6","7","8"):
         item, price= menu_items[a]
         print("Name:", item)
         print("Price:", price)
@@ -35,7 +35,7 @@ while True:
                     qty = int(input("Enter quantity --> "))
                     total = total + (price * qty)
                     items_ordered.append((item, qty, total))
-                    print("Suprise Burger added !",price, "x", qty, "=", total)
+                    print(name,"added !",price, "x", qty, "=", total)
                     break
                 except ValueError:
                      print("That ain't a number !?!?!?")
@@ -43,6 +43,38 @@ while True:
             print("sad --(*)_(*)--")
         else:
             print("Skipping...")
+    elif a in ("2","3","4","5",):
+        item, price= menu_items[a]
+        print("Name:", item)
+        print("Price:", price,"/",price+25)
+        print("Availability: Available")
+        print("Would you like to add it to cart")
+        b=input("--> ")
+        if b in ("yes", "y"):
+            print("Small or Medium")
+            c=input("S/M--> ")
+            if c in ("Small", "S","s"):
+                print(name,"[S]","added !",price, "x", qty, "=", total)
+                while True:
+                    try:
+                        qty = int(input("Enter quantity --> "))
+                        total = total + (price * qty)
+                        items_ordered.append((item+" [S]", qty, total))
+                        print(name,"added !",price, "x", qty, "=", total)
+                        break
+                    except ValueError:
+                        print("That ain't a number !?!?!?")
+            elif c in ("Medium","M","m"):
+                        print(name,"[S]","added !",price, "x", qty, "=", total)
+                while True:
+                    try:
+                        qty = int(input("Enter quantity --> "))
+                        total = total + (price * qty)
+                        items_ordered.append((item+" [S]", qty, total))
+                        print(name,"added !",price, "x", qty, "=", total)
+                        break
+                    except ValueError:
+                        print("That ain't a number !?!?!?")  
     elif a in ("Invoice", "I","i"):
         print("Enter details for Invoice")
         name=input("Name ")

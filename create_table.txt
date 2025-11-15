@@ -1,0 +1,10 @@
+create table Menu(SNo int(2) primary key, ItemName varchar(40), ItemPrice int(4),Check int(0))
+insert into Menu values(1,"Suprise Burger",75, null
+('Surprise Burger', '75'),
+('Pizza McPuff', '68'),
+('McFlurry Oreo (S/M)', '104/129'),
+('McFlurry Chocolate Overload (S/M)', '134/165'),
+('McFlurry Black Forest (M)', '136'),
+('McAloo Tikki', '74'),
+('Crispy Veggie burger', '198'),
+('McCrispy Chicken burger', '222');
