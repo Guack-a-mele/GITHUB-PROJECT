@@ -3,34 +3,26 @@ now = datetime.now()
 items_ordered= []
 menu_items = {}
 total=0
-'''
-qitemd={}
-
-with open("qitemd.txt", "r+") as qitem:
-        while True:
-            try:
-                for i, line in enumerate(qitem, start=1):
-                    if "-" in line:
-                        ab=qitem.readline()
-                        abc=(len(ab)-1)
-                        abcd,cd=line.split("-")
-                        qitemd[cd]=qitemd[cd]-qty
-            except EOFError:
-                break
-'''      
 with open("impmenu.txt", "r") as file:
     for i, line in enumerate(file, start=1): # learn this (NKS)
         if "-" in line:
             name, price = line.strip().split(" - ")
             menu_items[str(i)] = (name, int(price))
+print(''' 
+                                           ┌──────────────────────────────────┐
 
-print("==========================================[[WELCOME]]===========================================")
-print("1. To view Menu enter \"Menu\" or \"m\"")
-print("2. To add to cart enter the item's Serial Number")
-print("3. To view cart enter view cart")
-print("4. Invoice I or i")
+========================================== |    McDonald's Delivery System    | ===========================================
+
+                                           └──────────────────────────────────┘
+                                   ╔════════════════════[[OPTIONS]]══════════════════╗
+                                   ║1. To view Menu enter \"Menu\" or \"m\"              ║
+                                   ║2. To add to cart enter the item's Serial Number ║
+                                   ║3. To view cart enter \"cart\"                     ║
+                                   ║4. Invoice I or i                                ║
+                                   ║5. To exit press e                               ║
+                                   ╚═════════════════════════════════════════════════╝    
+''')
 while True: 
-    print("======================")
     a=input("Waiting for input --> ").strip()
     print("======================")
     if a in ("Menu", "m"):
@@ -41,15 +33,20 @@ while True:
         print("Name:", item)
         print("Price:", price)
         print("Availability: Available")
+        print('────────────────────────────────────')
         print("Would you like to add it to cart")
-        b=input("--> ")
+        print('────────────────────────────────────')
+        b=input("==> ")
         if b in ("yes", "y"):
             while True:
                 try:
                     qty = int(input("Enter quantity --> "))
                     total = total + (price * qty)
                     items_ordered.append((item, qty, price*qty))
-                    print(item,"added !",price, "x", qty, "=", price*qty)
+                    print("┌────────────Item───────────────┐")
+                    print(" ","📦",item,"added !")
+                    print("    ","₹",price, "x", qty, "=", price*qty)
+                    print("└───────────────────────────────┘")
                     break
                 except ValueError:
                      print("That ain't a number !?!?!?")
@@ -57,15 +54,18 @@ while True:
             print("sad --(*)_(*)--")
         else:
             print("Skipping...")
-    elif a in ("3","4","5",):
+    elif a in ("3","4"):
         item, price= menu_items[a]
         print("Name:", item,"[S/M]")
         print("Price:", price, "[S]","/",price+25,"[M]")
         print("Availability: Available")
+        print('────────────────────────────────────')
         print("Would you like to add it to cart")
-        b=input("--> ")
+        print('────────────────────────────────────')
+        b=input("==> ")
         if b in ("yes", "y"):
             print("Small or Medium")
+            print('────────────────────────────────────')
             c=input("S/M--> ")
             if c in ("Small", "S","s"):
                 while True:
@@ -73,7 +73,10 @@ while True:
                         qty = int(input("Enter quantity --> "))
                         total = total + (price * qty)
                         items_ordered.append((item+"[S]", qty, price*qty))
-                        print(item,"[S]","added !",price, "x", qty, "=", price*qty)
+                        print("┌────────────Item───────────────┐")
+                        print(" ","📦",item," [S] ","added !")
+                        print("    ","₹",price, " x ", qty, " = ", price*qty,sep='')
+                        print("└───────────────────────────────┘")
                         break
                     except ValueError:
                         print("That ain't a number !?!?!?")
@@ -82,15 +85,18 @@ while True:
                     try:
                         qty = int(input("Enter quantity --> "))
                         total = total + (price * qty)
-                        items_ordered.append((item+"[M]", qty, price*qty))
-                        print(item,"[M]","added !",price, "x", qty, "=", price*qty)
+                        items_ordered.append((item+"[M]", qty, (price+25)*qty))
+                        print("┌────────────Item───────────────┐")
+                        print(" ","📦",item," [M] ","added !")
+                        print("    ","₹",price, " x ", qty, " = ", (price+25)*qty,sep='')
+                        print("└───────────────────────────────┘")
                         break
                     except ValueError:
                         print("That ain't a number !?!?!?")  
     elif a in ("Invoice", "I","i"):
         if total==0:
             print("Your cart is empty, please add something first")
-            print("aaaplaceholder")
+            print("======================")
         else:
             print("Enter details for Invoice")
             name=input("Name ")
@@ -102,30 +108,57 @@ while True:
                     print("Enter the number damnit")
             address=input("Address ")
             with open("filename.txt", "w+") as file:
-                file.write("======= McDonald's Delivery Invoice =======\n")
+                file.write("═══════ McDonald's Delivery Invoice ═══════\n")
                 file.write(f"Date: {now.strftime('%d-%m-%Y %H:%M:%S')}\n")
                 file.write(f"Customer Name: {name}\n")
                 file.write(f"Phone: {phone}\n")
                 file.write(f"Address: {address}\n")
-                file.write("-------------------------------------------\n")
+                file.write("───────────────────────────────────────────\n")
                 file.write("Items Ordered:\n")
 
                 for item_name, qty, amount in items_ordered:
                     file.write(f"{item_name} x{qty} = {amount}\n")
 
-                file.write("-------------------------------------------\n")
+                file.write("───────────────────────────────────────────\n")
                 file.write(f"Total Bill: ₹{total}\n")
                 file.write("Thank you for ordering from McDonald's!\n")
                 file.write("Your food will be delivered shortly 🍟🍔\n")
+                file.write("═══════════════════════════════════════════\n")
                 file.seek(0)
                 print(file.read())
-    elif a in("cart"):
+    elif a=="cart":
         if total==0:
             print("Nothing in cart")
+            print("======================")
         else:
+            print('''  ░▒▓██████▓▒░ ░▒▓██████▓▒░░▒▓███████▓▒░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░     
+░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░     
+░▒▓█▓▒░      ░▒▓████████▓▒░▒▓███████▓▒░  ░▒▓█▓▒░     
+░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░     
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░     
+ ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░
+ ''')
             count=1
             for item_name, qty, amount in items_ordered:
-                print(count,item_name, "qty", qty,'amount', amount)
+                print(count,". ",item_name, " qty ", qty," amount ", amount, sep='')
+
                 count += 1
+    elif a=="e":
+        print("bye")
+        print('''
+        ''')
+        break
     else:
         print("Please choose something from the given options")
+        print("======================")
+'''
+   _____          _____ _______ 
+  / ____|   /\   |  __ \__   __|
+ | |       /  \  | |__) | | |   
+ | |      / /\ \ |  _  /  | |   
+ | |____ / ____ \| | \ \  | |   
+  \_____/_/    \_\_|  \_\ |_|   
+                                
+                                
+'''
