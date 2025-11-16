@@ -92,7 +92,9 @@ while True:
                         print("└───────────────────────────────┘")
                         break
                     except ValueError:
+                        print("-------------------------")
                         print("That ain't a number !?!?!?")  
+                        print("-------------------------")
     elif a in ("Invoice", "I","i"):
         if total==0:
             print("Your cart is empty, please add something first")
@@ -105,7 +107,9 @@ while True:
                     phone=int(input("Phone number "))
                     break
                 except ValueError:
-                    print("Enter the number damnit")
+                    print("-----------------------")
+                    print("Enter the number please")
+                    print("-----------------------")
             address=input("Address ")
             with open("filename.txt", "w+") as file:
                 file.write("═══════ McDonald's Delivery Invoice ═══════\n")
