@@ -73,10 +73,10 @@ while True:
                         qty = int(input("Enter quantity --> "))
                         total = total + (price * qty)
                         items_ordered.append((item+"[S]", qty, price*qty))
-                        print("┌────────────Item───────────────┐")
+                        print("┌──────────────Item──────────────┐")
                         print(" ","📦",item," [S] ","added !")
                         print("    ","₹",price, " x ", qty, " = ", price*qty,sep='')
-                        print("└───────────────────────────────┘")
+                        print("└────────────────────────────────┘")
                         break
                     except ValueError:
                         print("That ain't a number !?!?!?")
