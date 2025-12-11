@@ -1,5 +1,4 @@
 from datetime import datetime
-now = datetime.now()
 items_ordered= []
 menu_items = {}
 total=0
@@ -113,7 +112,7 @@ while True:
             address=input("Address ")
             with open("filename.txt", "w+") as file:
                 file.write("═══════ McDonald's Delivery Invoice ═══════\n")
-                file.write(f"Date: {now.strftime('%d-%m-%Y %H:%M:%S')}\n")
+                file.write(f"Date: {datetime.now().strftime('%d-%m-%Y %H:%M:%S')}\n") #Convert a date, time, or datetime object into a formatted string
                 file.write(f"Customer Name: {name}\n")
                 file.write(f"Phone: {phone}\n")
                 file.write(f"Address: {address}\n")
