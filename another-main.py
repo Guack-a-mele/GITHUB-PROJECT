@@ -4,7 +4,7 @@ items_ordered= []
 menu_items = {}
 total=0
 with open("impmenu.txt", "r") as file:
-    for i, line in enumerate(file, start=1): # learn this (NKS)
+    for i, line in enumerate(file, start=0): # start=1 why ?
         if "-" in line:
             name, price = line.strip().split(" - ")
             menu_items[str(i)] = (name, int(price))
@@ -146,7 +146,6 @@ while True:
             count=1
             for item_name, qty, amount in items_ordered:
                 print(count,". ",item_name, " qty ", qty," amount ", amount, sep='')
-
                 count += 1
     elif a=="e":
         print('''         _   _                                 _                _             
